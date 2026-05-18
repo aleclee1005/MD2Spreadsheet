@@ -2,6 +2,14 @@ document.getElementById('options-link').addEventListener('click', () => {
   chrome.runtime.openOptionsPage();
 });
 
+chrome.storage.sync.get('sheetId', ({ sheetId }) => {
+  if (sheetId) {
+    const url = `https://docs.google.com/spreadsheets/d/${sheetId}`;
+    document.getElementById('sheet-url').href = url;
+    document.getElementById('sheet-link').style.display = 'block';
+  }
+});
+
 document.getElementById('save-btn').addEventListener('click', async () => {
   const btn = document.getElementById('save-btn');
   const status = document.getElementById('status');

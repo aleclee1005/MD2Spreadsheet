@@ -26,14 +26,17 @@ async function createSpreadsheet(token, columns) {
     body: JSON.stringify({ properties: { title: 'MD2Spreadsheet' } })
   });
   const data = await res.json();
+  if (data.error) throw new Error(`Sheets API error: ${data.error.message}`);
   const sheetId = data.spreadsheetId;
   const endCol = colLetter(columns.length);
 
-  await fetch(`${SHEETS_API}/${sheetId}/values/Sheet1!A1:${endCol}1?valueInputOption=RAW`, {
+  const headerRes = await fetch(`${SHEETS_API}/${sheetId}/values/Sheet1!A1:${endCol}1?valueInputOption=RAW`, {
     method: 'PUT',
     headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({ values: [columns.map(c => COLUMN_LABELS[c])] })
   });
+  const headerData = await headerRes.json();
+  if (headerData.error) throw new Error(`Sheets API error: ${headerData.error.message}`);
 
   return sheetId;
 }
@@ -59,7 +62,7 @@ async function generateSummary(apiKey, bodyText, model = 'gemini-2.5-flash') {
 
 async function appendRow(token, sheetId, row) {
   const endCol = colLetter(row.length);
-  await fetch(
+  const res = await fetch(
     `${SHEETS_API}/${sheetId}/values/Sheet1!A:${endCol}:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`,
     {
       method: 'POST',
@@ -67,6 +70,8 @@ async function appendRow(token, sheetId, row) {
       body: JSON.stringify({ values: [row] })
     }
   );
+  const data = await res.json();
+  if (data.error) throw new Error(`Sheets API error: ${data.error.message}`);
 }
 
 chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
