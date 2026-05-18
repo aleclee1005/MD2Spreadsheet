@@ -32,7 +32,7 @@
     "https://generativelanguage.googleapis.com/*"
   ],
   "oauth2": {
-    "client_id": "637644398789-g9u3uvked4c16c37ionv5t88jbsv4pdf.apps.googleusercontent.com",
+    "client_id": "938137367379-ii0kjdvg56g9mhs7oafi66u7rmbc6h0r.apps.googleusercontent.com",
     "scopes": [
       "https://www.googleapis.com/auth/spreadsheets",
       "https://www.googleapis.com/auth/drive.file"
