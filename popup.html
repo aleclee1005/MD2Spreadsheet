@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 260px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #fff;
+    }
+    .header {
+      background: #1a7340;
+      color: #fff;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header span { font-size: 14px; font-weight: 600; }
+    .header a {
+      color: rgba(255,255,255,0.8);
+      font-size: 18px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .body { padding: 16px 14px; }
+    #save-btn {
+      width: 100%;
+      padding: 10px;
+      background: #1a7340;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    #save-btn:hover { background: #155c33; }
+    #save-btn:disabled { background: #aaa; cursor: not-allowed; }
+    #status {
+      margin-top: 12px;
+      font-size: 12px;
+      text-align: center;
+      color: #555;
+      min-height: 18px;
+    }
+    #status.success { color: #1a7340; font-weight: 600; }
+    #status.error { color: #c0392b; }
+    .sheet-link {
+      display: none;
+      margin-top: 8px;
+      text-align: center;
+      font-size: 11px;
+    }
+    .sheet-link a { color: #1a7340; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span>MD2Spreadsheet</span>
+    <a id="options-link" title="Settings">⚙</a>
+  </div>
+  <div class="body">
+    <button id="save-btn">Save to Sheets</button>
+    <div id="status"></div>
+    <div class="sheet-link" id="sheet-link">
+      <a id="sheet-url" href="#" target="_blank">Open Spreadsheet ↗</a>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
