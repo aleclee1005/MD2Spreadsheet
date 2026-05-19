@@ -6,13 +6,18 @@ A Chrome extension that saves any webpage to Google Sheets with an AI-generated 
 
 - One-click save: captures URL, title, author, publish date, and AI summary
 - Configurable columns — choose exactly which fields to save
+- Customizable Summary Prompt — write your own instruction for how AI summarizes pages
 - Gemini model selector (gemini-2.5-flash, 2.0-flash, 1.5-flash, 1.5-pro)
 - Writes directly to your own Google Sheets — no intermediate server
 - Free Gemini API tier supported
 
-## Installation (Manual)
+## Installation
 
-Until the extension is published on the Chrome Web Store, install it manually:
+### Chrome Web Store (recommended)
+
+*(Coming soon)*
+
+### Manual Installation (Developer Mode)
 
 1. Download or clone this repository
    ```
@@ -28,10 +33,11 @@ Until the extension is published on the Chrome Web Store, install it manually:
 1. Click the extension icon → click the **⚙** settings icon
 2. **Columns to Save** — check the fields you want recorded
 3. **AI Summary Method** — select "Gemini API" (recommended)
-4. **Gemini API Key** — get a free key at [aistudio.google.com](https://aistudio.google.com/apikey) and paste it in
-5. **Gemini Model** — default is `gemini-2.5-flash`
-6. **Google Account** — click "Connect Google Account" and authorize
-7. Click **Save Settings**
+4. **Summary Prompt** — optionally customize how AI summarizes pages (leave blank for default)
+5. **Gemini API Key** — get a free key at [aistudio.google.com](https://aistudio.google.com/apikey) and paste it in
+6. **Gemini Model** — default is `gemini-2.5-flash`
+7. **Google Account** — click "Connect Google Account" and authorize
+8. Click **Save Settings**
 
 ## Usage
 
@@ -39,6 +45,15 @@ Until the extension is published on the Chrome Web Store, install it manually:
 2. Click the AIClipSheet extension icon
 3. Click **Save to Sheets**
 4. A row is appended to your Google Spreadsheet with the page data and AI summary
+
+## Custom Summary Prompt Examples
+
+| Prompt | Output |
+|--------|--------|
+| *(blank — uses default)* | 3 bullet points in the article's language |
+| `Summarize in 1 sentence under 50 words:` | Single concise sentence |
+| `List 5 key takeaways as a numbered list:` | Numbered list |
+| `この記事を日本語で3行にまとめてください：` | Japanese 3-line summary |
 
 ## Privacy
 
