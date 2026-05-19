@@ -1,10 +1,10 @@
-# Privacy Policy for MD2Spreadsheet
+# Privacy Policy for AI Clip Sheet
 
 _Last updated: May 19, 2026_
 
 ## Overview
 
-MD2Spreadsheet is a Chrome browser extension that saves webpage content to the user's own Google Sheets using the Google Sheets API and generates summaries via the Google Gemini API. This policy explains what data is accessed, how it is used, and what is never collected.
+AI Clip Sheet is a Chrome browser extension that saves webpage content to the user's own Google Sheets using the Google Sheets API and generates summaries via the Google Gemini API. This policy explains what data is accessed, how it is used, and what is never collected.
 
 ## Data Accessed
 
@@ -59,4 +59,4 @@ This data remains on your device and synced across your Chrome profile. You can 
 ## Contact
 
 If you have questions about this privacy policy, please open an issue at:
-[https://github.com/aleclee1005/MD2Spreadsheet/issues](https://github.com/aleclee1005/MD2Spreadsheet/issues)
+[https://github.com/aleclee1005/AIClipSheet/issues](https://github.com/aleclee1005/AIClipSheet/issues)

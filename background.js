@@ -23,7 +23,7 @@ async function createSpreadsheet(token, columns) {
   const res = await fetch(SHEETS_API, {
     method: 'POST',
     headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ properties: { title: 'MD2Spreadsheet' } })
+    body: JSON.stringify({ properties: { title: 'AI Clip Sheet' } })
   });
   const data = await res.json();
   if (data.error) throw new Error(`Sheets API error: ${data.error.message}`);

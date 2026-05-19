@@ -1,4 +1,4 @@
-# MD2Spreadsheet
+# AIClipSheet
 
 A Chrome extension that saves any webpage to Google Sheets with an AI-generated summary powered by Gemini.
 
@@ -16,11 +16,11 @@ Until the extension is published on the Chrome Web Store, install it manually:
 
 1. Download or clone this repository
    ```
-   git clone https://github.com/aleclee1005/MD2Spreadsheet.git
+   git clone https://github.com/aleclee1005/AIClipSheet.git
    ```
 2. Open Chrome and go to `chrome://extensions`
 3. Enable **Developer mode** (top-right toggle)
-4. Click **Load unpacked** and select the `MD2Spreadsheet` folder
+4. Click **Load unpacked** and select the `AIClipSheet` folder
 5. The extension icon will appear in your toolbar
 
 ## Setup
@@ -36,7 +36,7 @@ Until the extension is published on the Chrome Web Store, install it manually:
 ## Usage
 
 1. Open any article or webpage
-2. Click the MD2Spreadsheet extension icon
+2. Click the AIClipSheet extension icon
 3. Click **Save to Sheets**
 4. A row is appended to your Google Spreadsheet with the page data and AI summary
 

@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "MD2Spreadsheet",
+  "name": "AI Clip Sheet",
   "version": "1.0.0",
   "description": "Save any webpage to Google Sheets with an AI-generated summary.",
   "icons": {
@@ -15,7 +15,7 @@
       "48": "icons/icon48.png",
       "128": "icons/icon128.png"
     },
-    "default_title": "MD2Spreadsheet"
+    "default_title": "AI Clip Sheet"
   },
   "background": {
     "service_worker": "background.js"
