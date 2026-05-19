@@ -1,4 +1,4 @@
-const DEFAULT_COLUMNS = ['date', 'url', 'title', 'author', 'published', 'summary'];
+const DEFAULT_COLUMNS = ['date', 'siteName', 'url', 'title', 'author', 'published', 'description', 'summary'];
 
 async function load() {
   const { geminiApiKey, sheetId, summaryMode, geminiModel, columns, summaryPrompt } = await chrome.storage.sync.get(['geminiApiKey', 'sheetId', 'summaryMode', 'geminiModel', 'columns', 'summaryPrompt']);

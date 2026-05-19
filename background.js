@@ -1,8 +1,9 @@
 const SHEETS_API = 'https://sheets.googleapis.com/v4/spreadsheets';
 const GEMINI_API_BASE = 'https://generativelanguage.googleapis.com/v1beta/models';
 
-const DEFAULT_COLUMNS = ['date', 'url', 'title', 'author', 'published', 'summary'];
-const COLUMN_LABELS = { date: 'Date', url: 'URL', title: 'Title', author: 'Author', published: 'Published', summary: 'Summary' };
+const DEFAULT_COLUMNS = ['date', 'siteName', 'url', 'title', 'author', 'published', 'description', 'summary'];
+const ALL_COLUMNS = ['date', 'siteName', 'url', 'title', 'author', 'published', 'description', 'summary'];
+const COLUMN_LABELS = { date: 'Date', siteName: 'Site Name', url: 'URL', title: 'Title', author: 'Author', published: 'Published', description: 'Description', summary: 'Summary' };
 
 function colLetter(n) { return String.fromCharCode(64 + n); }
 
@@ -98,7 +99,7 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
         chrome.storage.sync.set({ sheetId });
       }
 
-      const { url, title, author, publishedDate, bodyText } = msg.data;
+      const { url, title, author, publishedDate, description, siteName, bodyText } = msg.data;
 
       let summary = '';
       if (columns.includes('summary')) {
@@ -113,7 +114,7 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
       const pad = n => String(n).padStart(2, '0');
       const dateStr = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
 
-      const allValues = { date: dateStr, url, title, author, published: publishedDate, summary };
+      const allValues = { date: dateStr, siteName, url, title, author, published: publishedDate, description, summary };
       const row = columns.map(c => allValues[c]);
 
       await appendRow(token, sheetId, row);

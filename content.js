@@ -42,6 +42,11 @@
       const timeEl = document.querySelector('time[datetime]');
       return timeEl?.getAttribute('datetime')?.slice(0, 10) || '';
     })(),
+    description: getMeta('og:description', 'twitter:description', 'description'),
+    siteName: getMeta('og:site_name') || (() => {
+      const host = window.location.hostname.replace(/^www\./, '');
+      return host.split('.')[0].charAt(0).toUpperCase() + host.split('.')[0].slice(1);
+    })(),
     bodyText: getBodyText()
   };
 })();
