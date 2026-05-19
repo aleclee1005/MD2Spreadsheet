@@ -1,10 +1,11 @@
 const DEFAULT_COLUMNS = ['date', 'url', 'title', 'author', 'published', 'summary'];
 
 async function load() {
-  const { geminiApiKey, sheetId, summaryMode, geminiModel, columns } = await chrome.storage.sync.get(['geminiApiKey', 'sheetId', 'summaryMode', 'geminiModel', 'columns']);
+  const { geminiApiKey, sheetId, summaryMode, geminiModel, columns, summaryPrompt } = await chrome.storage.sync.get(['geminiApiKey', 'sheetId', 'summaryMode', 'geminiModel', 'columns', 'summaryPrompt']);
   if (geminiApiKey) document.getElementById('gemini-key').value = geminiApiKey;
   if (summaryMode) document.getElementById('summary-mode').value = summaryMode;
   if (geminiModel) document.getElementById('gemini-model').value = geminiModel;
+  if (summaryPrompt) document.getElementById('summary-prompt').value = summaryPrompt;
 
   const enabled = columns || DEFAULT_COLUMNS;
   DEFAULT_COLUMNS.forEach(col => {
@@ -25,6 +26,7 @@ document.getElementById('save-btn').addEventListener('click', async () => {
   const geminiApiKey = document.getElementById('gemini-key').value.trim();
   const summaryMode = document.getElementById('summary-mode').value;
   const geminiModel = document.getElementById('gemini-model').value;
+  const summaryPrompt = document.getElementById('summary-prompt').value.trim();
   const columns = DEFAULT_COLUMNS.filter(col => document.getElementById(`col-${col}`).checked);
 
   if (columns.length === 0) {
@@ -35,7 +37,7 @@ document.getElementById('save-btn').addEventListener('click', async () => {
     return;
   }
 
-  await chrome.storage.sync.set({ geminiApiKey, summaryMode, geminiModel, columns });
+  await chrome.storage.sync.set({ geminiApiKey, summaryMode, geminiModel, columns, summaryPrompt });
   const msg = document.getElementById('msg');
   msg.textContent = '✓ Saved!';
   msg.style.color = '#1a7340';

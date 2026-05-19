@@ -15,8 +15,10 @@ async function getAuthToken() {
   });
 }
 
+const DEFAULT_SUMMARY_PROMPT = 'Summarize this article in 3 concise bullet points (in the same language as the article). Do not include any intro sentence, just the bullet points:';
+
 async function getSettings() {
-  return new Promise(resolve => chrome.storage.sync.get(['geminiApiKey', 'sheetId', 'summaryMode', 'geminiModel', 'columns'], resolve));
+  return new Promise(resolve => chrome.storage.sync.get(['geminiApiKey', 'sheetId', 'summaryMode', 'geminiModel', 'columns', 'summaryPrompt'], resolve));
 }
 
 async function createSpreadsheet(token, columns) {
@@ -41,7 +43,7 @@ async function createSpreadsheet(token, columns) {
   return sheetId;
 }
 
-async function generateSummary(apiKey, bodyText, model = 'gemini-2.5-flash') {
+async function generateSummary(apiKey, bodyText, model = 'gemini-2.5-flash', prompt = DEFAULT_SUMMARY_PROMPT) {
   if (!bodyText || bodyText.length < 50) throw new Error('Page body text too short to summarize.');
   console.log('[MD2] Calling Gemini API, model:', model, 'key prefix:', apiKey?.slice(0, 8), 'bodyText length:', bodyText.length);
   const endpoint = `${GEMINI_API_BASE}/${model}:generateContent`;
@@ -50,7 +52,7 @@ async function generateSummary(apiKey, bodyText, model = 'gemini-2.5-flash') {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       contents: [{
-        parts: [{ text: `Summarize this article in 3 concise bullet points (in the same language as the article). Do not include any intro sentence, just the bullet points:\n\n${bodyText}` }]
+        parts: [{ text: `${prompt}\n\n${bodyText}` }]
       }]
     })
   });
@@ -79,7 +81,7 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
 
   (async () => {
     try {
-      const { geminiApiKey, sheetId: savedId, summaryMode, geminiModel, columns: savedColumns } = await getSettings();
+      const { geminiApiKey, sheetId: savedId, summaryMode, geminiModel, columns: savedColumns, summaryPrompt } = await getSettings();
       const columns = savedColumns || DEFAULT_COLUMNS;
 
       const needsGemini = columns.includes('summary') && summaryMode !== 'ai_formula';
@@ -101,7 +103,7 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
       let summary = '';
       if (columns.includes('summary')) {
         if (summaryMode !== 'ai_formula') {
-          summary = await generateSummary(geminiApiKey, bodyText, geminiModel || 'gemini-2.5-flash');
+          summary = await generateSummary(geminiApiKey, bodyText, geminiModel || 'gemini-2.5-flash', summaryPrompt || DEFAULT_SUMMARY_PROMPT);
         } else {
           summary = `=AI("Summarize in 3 bullet points: ${title} ${url}")`;
         }
