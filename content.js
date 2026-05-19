@@ -42,11 +42,16 @@
       const timeEl = document.querySelector('time[datetime]');
       return timeEl?.getAttribute('datetime')?.slice(0, 10) || '';
     })(),
-    description: getMeta('og:description', 'twitter:description', 'description'),
-    siteName: getMeta('og:site_name') || (() => {
-      const host = window.location.hostname.replace(/^www\./, '');
-      return host.split('.')[0].charAt(0).toUpperCase() + host.split('.')[0].slice(1);
-    })(),
+    description: getMeta('og:description', 'twitter:description', 'description') ||
+      document.querySelector('meta[name="description"]')?.getAttribute('content') || '',
+    siteName: getMeta('og:site_name') ||
+      document.querySelector('meta[property="og:site_name"]')?.getAttribute('content') ||
+      (() => {
+        const host = window.location.hostname.replace(/^www\./, '');
+        const parts = host.split('.');
+        const domain = parts.length >= 2 ? parts[parts.length - 2] : parts[0];
+        return domain.charAt(0).toUpperCase() + domain.slice(1);
+      })(),
     bodyText: getBodyText()
   };
 })();

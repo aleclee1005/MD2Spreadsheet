@@ -1,5 +1,5 @@
-const DEFAULT_COLUMNS = ['date', 'url', 'title', 'author', 'published', 'summary'];
-const LABEL = { date: 'Date', url: 'URL', title: 'Title', author: 'Author', published: 'Published', summary: 'Summary' };
+const DEFAULT_COLUMNS = ['date', 'siteName', 'url', 'title', 'author', 'published', 'description', 'summary'];
+const LABEL = { date: 'Date', siteName: 'Site Name', url: 'URL', title: 'Title', author: 'Author', published: 'Published', description: 'Description', summary: 'Summary' };
 
 document.getElementById('options-link').addEventListener('click', () => {
   chrome.runtime.openOptionsPage();
@@ -35,10 +35,12 @@ chrome.storage.sync.get('sheetId', ({ sheetId }) => {
 
     const values = {
       date: dateStr,
+      siteName: data.siteName || '—',
       url: data.url,
       title: data.title,
       author: data.author || '—',
       published: data.publishedDate || '—',
+      description: data.description || '—',
       summary: null
     };
 
