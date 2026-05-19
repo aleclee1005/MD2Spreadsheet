@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy – AI Clip Sheet</title>
+  <style>
+    body { max-width: 720px; margin: 48px auto; padding: 0 24px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #111; line-height: 1.7; }
+    h1 { font-size: 28px; margin-bottom: 4px; }
+    h2 { font-size: 18px; margin-top: 36px; }
+    p, li { font-size: 15px; }
+    table { border-collapse: collapse; width: 100%; margin: 16px 0; }
+    th, td { border: 1px solid #ddd; padding: 8px 12px; text-align: left; font-size: 14px; }
+    th { background: #f5f5f5; }
+    a { color: #0066cc; }
+    .meta { color: #666; font-size: 14px; margin-bottom: 32px; }
+  </style>
+</head>
+<body>
+  <h1>Privacy Policy for AI Clip Sheet</h1>
+  <p class="meta">Last updated: May 19, 2026</p>
+
+  <h2>Overview</h2>
+  <p>AI Clip Sheet is a Chrome browser extension that saves webpage content to the user's own Google Sheets using the Google Sheets API and generates summaries via the Google Gemini API. This policy explains what data is accessed, how it is used, and what is never collected.</p>
+
+  <h2>Data Accessed</h2>
+  <p>When you click "Save to Sheets", the extension accesses the following data from the active browser tab:</p>
+  <table>
+    <tr><th>Data</th><th>Purpose</th></tr>
+    <tr><td>Page URL</td><td>Recorded as a reference link in your spreadsheet</td></tr>
+    <tr><td>Page title</td><td>Recorded in your spreadsheet</td></tr>
+    <tr><td>Author metadata</td><td>Recorded in your spreadsheet (if available on the page)</td></tr>
+    <tr><td>Publication date</td><td>Recorded in your spreadsheet (if available on the page)</td></tr>
+    <tr><td>Page body text (up to 5,000 characters)</td><td>Sent to the Google Gemini API to generate a summary</td></tr>
+  </table>
+
+  <h2>How Data Is Used</h2>
+  <ul>
+    <li><strong>Page content</strong> is sent directly to the <a href="https://ai.google.dev/">Google Gemini API</a> using your own API key to generate a text summary. This is a direct call from your browser to Google's servers.</li>
+    <li><strong>Summary and metadata</strong> are written to a Google Spreadsheet in your own Google Drive using the <a href="https://developers.google.com/sheets">Google Sheets API</a>, authenticated via your own Google account.</li>
+    <li>Your <strong>Gemini API key</strong> is stored locally in Chrome's <code>storage.sync</code> and is only used to authenticate requests to the Gemini API.</li>
+  </ul>
+
+  <h2>Data We Do NOT Collect</h2>
+  <p>The developer of this extension does <strong>not</strong>:</p>
+  <ul>
+    <li>Operate any backend server or database</li>
+    <li>Collect, receive, store, or transmit your personal data, browsing history, or page content to any server controlled by the developer</li>
+    <li>Track your usage or activity in any way</li>
+    <li>Share any data with third parties beyond the Google APIs listed above</li>
+  </ul>
+  <p>All data flows directly between your browser, Google Sheets, and Google Gemini — the developer has no access to any of it.</p>
+
+  <h2>Third-Party Services</h2>
+  <p>This extension relies on the following Google services, each governed by Google's own privacy policies:</p>
+  <ul>
+    <li><a href="https://developers.google.com/sheets">Google Sheets API</a></li>
+    <li><a href="https://developers.google.com/drive">Google Drive API</a></li>
+    <li><a href="https://ai.google.dev/">Google Gemini API</a></li>
+    <li><a href="https://developers.google.com/identity">Google Identity / OAuth 2.0</a></li>
+  </ul>
+  <p>Please refer to <a href="https://policies.google.com/privacy">Google's Privacy Policy</a> for details on how Google handles your data.</p>
+
+  <h2>Data Retention</h2>
+  <p>The extension stores the following data locally in your browser via Chrome's <code>storage.sync</code>:</p>
+  <ul>
+    <li>Your Gemini API key</li>
+    <li>Your Google Spreadsheet ID</li>
+    <li>Your selected settings (columns, model, summary method)</li>
+  </ul>
+  <p>This data remains on your device and synced across your Chrome profile. You can clear it at any time by clicking "Disconnect" in the extension settings or removing the extension.</p>
+
+  <h2>Contact</h2>
+  <p>If you have questions about this privacy policy, please open an issue at:<br>
+  <a href="https://github.com/aleclee1005/AIClipSheet/issues">https://github.com/aleclee1005/AIClipSheet/issues</a></p>
+</body>
+</html>
