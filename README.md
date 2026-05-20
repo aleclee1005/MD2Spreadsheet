@@ -55,6 +55,10 @@ A Chrome extension that saves any webpage to Google Sheets with an AI-generated 
 | `List 5 key takeaways as a numbered list:` | Numbered list |
 | `この記事を日本語で3行にまとめてください：` | Japanese 3-line summary |
 
+## Disclaimer
+
+Use at your own risk. Do not use this extension on pages containing sensitive personal or financial information.
+
 ## Privacy
 
 This extension does not collect or transmit your data to any third-party server owned by the developer. See [PRIVACY_POLICY.md](PRIVACY_POLICY.md) for details.
