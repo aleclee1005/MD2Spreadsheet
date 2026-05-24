@@ -1,6 +1,7 @@
 {
   "manifest_version": 3,
   "name": "AI Clip Sheet",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxTufKg20F48deN8/Dj8lxzGP/sVsfth0w7pN/UIGTl/bZxhVeAvxvqBsm1SCndjIePKASIr0EJu1F+LYIKQgE5n4gQbtCRxSPUWoCMFlLMpbh7DTvyCQmV2qnTXe0uxSgxdNKlVu00FmoGFx25JHPql1hp0vXsLhr2eZEQtw1wfhmpTra5DaC/Op/tcc1/VtRpGXncccTLoIS+xqjV7vn8qml4x9lvCJ7nPTFwM7HRh9OrkA/sY5s3nXeOzVSSGjzKuNx1lXL9iCTxq92ebPW14pvgrFcBxZZWJUROnJzQ19ose4pYCqTemxH/JvzugW3Xg8dn4IrPMB4rw2zgSihQIDAQAB",
   "version": "1.0.0",
   "description": "Save any webpage to Google Sheets with an AI-generated summary.",
   "icons": {
